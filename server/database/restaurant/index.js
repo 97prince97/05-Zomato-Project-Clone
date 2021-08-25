@@ -12,7 +12,7 @@ const RestaurantSchema = new mongoose.Schema(
     website: String,
     popularDishes: [String],
     averageCost: Number, // if two people visit the restaurant what will be the avg cost
-    amenties: [Strings],
+    amenities: [String],
     menuImages: {
       type: mongoose.Types.ObjectId,
       ref: "Images",
