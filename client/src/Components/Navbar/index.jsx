@@ -65,11 +65,11 @@ const LargeNav = () => {
             </div>
           </div>
           <div className="flex items-center w-48">
-            <div className="flex gap-6 w-full">
-              <button className="text-gray-500 hover:text-gray-700 text-lg">
+            <div className="flex gap-9 w-full">
+              <button className="text-gray-400 hover:text-gray-600 text-lg tracking-wide">
                 Log in
               </button>
-              <button className="text-gray-500 hover:text-gray-700 text-lg">
+              <button className="text-gray-400 hover:text-gray-600 text-lg tracking-wide">
                 Sign up
               </button>
             </div>
