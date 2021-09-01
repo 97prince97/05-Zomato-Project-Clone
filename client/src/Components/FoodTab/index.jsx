@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import {
   RiShoppingBag3Line,
   RiFootprintLine,
@@ -7,25 +8,58 @@ import {
 import { GiWineGlass } from "react-icons/gi";
 
 const MobileTabs = () => {
+  const [allTypes, setAllTypes] = useState([
+    {
+      id: "delivery",
+      icon: <RiShoppingBag3Line />,
+      name: "Delivery",
+      isActive: false,
+    },
+    {
+      id: "dining",
+      icon: <RiFootprintLine />,
+      name: "Dining Out",
+      isActive: false,
+    },
+    {
+      id: "night",
+      icon: <GiWineGlass />,
+      name: "Night Life",
+      isActive: false,
+    },
+    {
+      id: "nutri",
+      icon: <RiHeartAddLine />,
+      name: "Nutrition",
+      isActive: false,
+    },
+  ]);
+
+  const { type } = useParams();
+
   return (
     <>
-      <div className="bg-white shadow-lg p-3 fixed bottom-0 z-10 flex items-center justify-between md:justify-around w-full">
-        <div className="flex flex-col items-center text-2xl">
-          <RiShoppingBag3Line />
-          <h5 className="text-sm">Delivery</h5>
-        </div>
-        <div className="flex flex-col items-center text-2xl">
-          <RiFootprintLine />
-          <h5 className="text-sm">Dining Out</h5>
-        </div>
-        <div className="flex flex-col items-center text-2xl">
-          <GiWineGlass />
-          <h5 className="text-sm">Night Life</h5>
-        </div>
-        <div className="flex flex-col items-center text-2xl">
-          <RiHeartAddLine />
-          <h5 className="text-sm">Nurtition</h5>
-        </div>
+      <div className="bg-white shadow-lg p-3 fixed bottom-0 z-10 flex items-center justify-between md:justify-around w-full border">
+        {allTypes.map((items) => (
+          <Link to={`/${items.id}`}>
+            <div
+              className={
+                type === items.id
+                  ? "flex flex-col relative items-center text-2xl text-zomato-400"
+                  : "flex flex-col items-center text-2xl"
+              }
+            >
+              <div
+                className={
+                  type === items.id &&
+                  "absolute -top-3 w-32 h-2 border-t-2 border-zomato-400"
+                }
+              />
+              {items.icon}
+              <h5 className="text-sm">{items.name}</h5>
+            </div>
+          </Link>
+        ))}
       </div>
     </>
   );
