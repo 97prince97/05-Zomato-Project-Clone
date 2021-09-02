@@ -110,7 +110,7 @@ const LargeTabs = () => {
         <Link to={`/${items.id}`}>
           <div
             className={classnames(
-              "flex items-center gap-2.5 pb-2 transition-all duration-500 ease-in-out ",
+              "flex items-center gap-2.5 pb-2 transition-all duration-500 ease-in-out my-8",
               {
                 "border-b-2 border-zomato-400": type === items.id,
               }
