@@ -9,6 +9,7 @@ import ImageGrid from "../Components/restaurant/ImageGrid";
 import RestaurantInfo from "../Components/restaurant/RestaurantInfo";
 import InfoButtons from "../Components/restaurant/InfoButtons";
 import { TiStarOutline } from "react-icons/ti";
+import TabContainer from "../Components/restaurant/Tabs";
 
 const RestaurantLayout = () => {
   return (
@@ -45,6 +46,7 @@ const RestaurantLayout = () => {
             <RiShareForwardLine /> Share
           </InfoButtons>
         </div>
+        <TabContainer />
       </div>
     </>
   );
