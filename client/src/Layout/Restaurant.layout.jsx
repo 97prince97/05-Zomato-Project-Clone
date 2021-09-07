@@ -11,7 +11,7 @@ import InfoButtons from "../Components/restaurant/InfoButtons";
 import { TiStarOutline } from "react-icons/ti";
 import TabContainer from "../Components/restaurant/Tabs";
 
-const RestaurantLayout = () => {
+const RestaurantLayout = (props) => {
   return (
     <>
       <RestaurantNavbar />
@@ -46,7 +46,10 @@ const RestaurantLayout = () => {
             <RiShareForwardLine /> Share
           </InfoButtons>
         </div>
-        <TabContainer />
+        <div className="my-5">
+          <TabContainer></TabContainer>
+        </div>
+        {props.children}
       </div>
     </>
   );
