@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 import { IoCaretForwardSharp } from "react-icons/io5";
+import { FaRegCopy, FaDirections } from "react-icons/fa";
 import Slider from "react-slick";
 import ReactStars from "react-rating-stars-component";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
@@ -10,19 +11,46 @@ import MenuCollection from "../../Components/restaurant/MenuCollection";
 import MenuSimilarRestaurantCard from "../../Components/restaurant/MenuSimilarRestaurantCard";
 import { NextArrow, PrevArrow } from "../../Components/CarouselArrow";
 import ReviewCard from "../../Components/restaurant/Reviews/reviewCard";
+import Mapview from "../../Components/restaurant/Mapview";
 
 const Overview = () => {
   const { id } = useParams();
 
   const settings = {
-    arrows: true,
     dots: false,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
-    nextArrow: <NextArrow />,
+    initialSlide: 0,
     prevArrow: <PrevArrow />,
+    nextArrow: <NextArrow />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: false,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
   const ratingChanged = (newRating) => {
     console.log(newRating);
@@ -105,6 +133,14 @@ const Overview = () => {
               activeColor="#ffd700"
             />
           </div>
+          <div className="my-4 md:hidden flex flex-col gap-4 w-full">
+            <Mapview
+              title="La Pino'z Pizza"
+              address="Shop 114/11-g & 114/22-g, Ground Floor, Deep Sikha Building, Sanjay Place, Civil Lines, Agra"
+              phno="+916366666094"
+              mapLocation={[27.2044175363507, 78.00772061655692]}
+            />
+          </div>
           <div className="my-4 flex flex-col gap-4">
             <ReviewCard />
             <ReviewCard />
@@ -113,30 +149,14 @@ const Overview = () => {
         </div>
         <aside
           style={{ height: "fit-content" }}
-          className="hidden md:w-1/3 md:block sticky rounded-xl top-2 bg-white-200 p-3 shadow-md"
+          className="hidden md:w-1/3 md:flex sticky rounded-xl top-2 bg-white-200 p-3 shadow-md flex flex-col gap-4"
         >
-          <h4 className="text-xl font-medium">Call</h4>
-          <h5 className="text-zomato-400 text-medium">+916366666094</h5>
-          <div>
-            <h4 className="text-xl font-medium">Direction</h4>
-            <div className="w-full h-48">
-              <MapContainer
-                center={[27.2044175363507, 78.00772061655692]}
-                zoom={13}
-                scrollWheelZoom={false}
-              >
-                <TileLayer
-                  attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
-                <Marker position={[27.2044175363507, 78.00772061655692]}>
-                  <Popup>
-                    A pretty CSS3 popup. <br /> Easily customizable.
-                  </Popup>
-                </Marker>
-              </MapContainer>
-            </div>
-          </div>
+          <Mapview
+            title="La Pino'z Pizza"
+            address="Shop 114/11-g & 114/22-g, Ground Floor, Deep Sikha Building, Sanjay Place, Civil Lines, Agra"
+            phno="+916366666094"
+            mapLocation={[27.2044175363507, 78.00772061655692]}
+          />
         </aside>
       </div>
     </>
