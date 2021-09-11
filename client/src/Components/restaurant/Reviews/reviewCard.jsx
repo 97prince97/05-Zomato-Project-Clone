@@ -4,7 +4,7 @@ import { TiStar } from "react-icons/ti";
 const ReviewCard = () => {
   return (
     <>
-      <div className=" my-3 flex flex-col gap-3">
+      <div className=" my-4 flex flex-col gap-3">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="w-10 h-10 rounded-full">
