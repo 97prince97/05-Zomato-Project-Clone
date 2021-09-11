@@ -1,13 +1,8 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
-import Rating from "react-rating-stars-component";
+import { FcGoogle } from "react-icons/fc";
 
-export default function ReviewModal({
-  isOpen,
-  setIsOpen,
-  handleRating,
-  ...props
-}) {
+export default function SignUp({ isOpen, setIsOpen }) {
   function closeModal() {
     setIsOpen(false);
   }
@@ -53,55 +48,43 @@ export default function ReviewModal({
                 <Dialog.Title
                   as="h3"
                   className="text-lg font-medium leading-6 text-gray-900"
-                >
-                  Add Review
-                </Dialog.Title>
-                <div className="mt-2 flex flex-col gap-4">
-                  <div className="flex items-center gap-3 font-light text-lg">
-                    <div className="flex items-center gap-2">
-                      <input type="radio" name="review" id="dining" />
-                      <label htmlFor="dining">Dining</label>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <input type="radio" name="review" id="delivery" />
-                      <label htmlFor="delivery">Delivery</label>
-                    </div>
-                  </div>
-                  <Rating count={5} size={24} onChange={handleRating} />
-
-                  <form className="flex flex-col gap-4">
+                ></Dialog.Title>
+                <div className="mt-2 w-full flex flex-col gap-3">
+                  <button className="py-2 rounded-lg justify-center flex items-center gap-2 w-full border border-gray-400 bg-white text-gray-700 hover:bg-gray-100">
+                    SignUp With Google <FcGoogle />
+                  </button>
+                  <form className="flex flex-col gap-3">
                     <div className="w-full flex flex-col gap-2">
-                      <label htmlFor="subject">Subject</label>
+                      <label htmlFor="fullname">Fullname</label>
                       <input
                         type="text"
-                        name="subject"
-                        id="subject"
-                        placeholder="amazing food"
+                        id="fullname"
+                        placeholder="John Doe"
                         className="w-full border border-gray-400 px-3 py-2 rounded-lg focus:outline-none focus:border-zomato-400"
                       />
                     </div>
-                    <div>
-                      <label htmlFor="reviewText">Review Text</label>
-                      <textarea
-                        type="text"
-                        name="reviewText"
-                        id="reviewText"
-                        placeholder="amazing food"
-                        rows="5"
+                    <div className="w-full flex flex-col gap-2">
+                      <label htmlFor="email">Email</label>
+                      <input
+                        type="email"
+                        id="email"
+                        placeholder="email@email.com"
                         className="w-full border border-gray-400 px-3 py-2 rounded-lg focus:outline-none focus:border-zomato-400"
-                      ></textarea>
+                      />
+                    </div>
+                    <div className="w-full flex flex-col gap-2">
+                      <label htmlFor="password">Password</label>
+                      <input
+                        type="password"
+                        id="password"
+                        placeholder="***********"
+                        className="w-full border border-gray-400 px-3 py-2 rounded-lg focus:outline-none focus:border-zomato-400"
+                      />
+                    </div>
+                    <div className="w-full text-center bg-zomato-400 text-white py-2 rounded-lg">
+                      Sign Up
                     </div>
                   </form>
-                </div>
-
-                <div className="mt-4">
-                  <button
-                    type="button"
-                    className="inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
-                    onClick={closeModal}
-                  >
-                    Submit
-                  </button>
                 </div>
               </div>
             </Transition.Child>
