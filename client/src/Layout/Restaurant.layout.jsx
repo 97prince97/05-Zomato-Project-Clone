@@ -10,6 +10,7 @@ import RestaurantInfo from "../Components/restaurant/RestaurantInfo";
 import InfoButtons from "../Components/restaurant/InfoButtons";
 import { TiStarOutline } from "react-icons/ti";
 import TabContainer from "../Components/restaurant/Tabs";
+import CartContainer from "../Components/Cart/CartContainer";
 
 const RestaurantLayout = (props) => {
   return (
@@ -49,8 +50,9 @@ const RestaurantLayout = (props) => {
         <div className="my-5">
           <TabContainer></TabContainer>
         </div>
-        {props.children}
+        <div className="relative">{props.children}</div>
       </div>
+      <CartContainer />
     </>
   );
 };
