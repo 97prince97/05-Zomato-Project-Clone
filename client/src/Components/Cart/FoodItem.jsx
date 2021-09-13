@@ -7,7 +7,7 @@ const FoodItem = (props) => {
         <h5>{props.name}</h5>
         <div className="flex flex-col items-end">
           <small>₹{parseInt(props.price) * parseInt(props.quantity)}</small>
-          <div className="px-2  bg-zomato-400 text-white rounded flex items-center gap-1">
+          <div className="px-2 bg-zomato-400 text-white rounded flex items-center gap-1">
             <button className="p-1 bg-zomato-400 text-white rounded">-</button>
             <small>12</small>
             <button className="p-1 bg-zomato-400 text-white rounded">+</button>
