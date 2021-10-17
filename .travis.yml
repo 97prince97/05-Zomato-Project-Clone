@@ -1,0 +1,36 @@
+sudo: required
+
+#install docker
+services:
+ - docker 
+
+#execute logic
+script: 
+ - echo "Hello Students!"
+
+after_success:
+ #build all the docker files
+ - docker build -t 97prince97/zomato-master-client ./client
+ - docker build -t 97prince97/zomato-master-server ./server
+ - docker build -t 97prince97/zomato-master-nginx ./nginx
+
+#log in docker
+ - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
+#push to docker hub
+ - docker push 97prince97/zomato-master-client
+ - docker push 97prince97/zomato-master-server
+ - docker push 97prince97/zomato-master-nginx
+
+deploy:
+ #deploy to AWS EBS 
+ provider: elasticbeanstalk
+ region: ap-south-1
+ app: Zomato_clone
+ env: Zomatoclone-env
+ bucket_name: elasticbeanstalk-ap-south-1-685046081077
+ bucket_path: zomatomasterproject
+ on:
+  branch: main
+ access_key_id: $AWS_KEY
+ secret_access_key: $AWS_SECRET
